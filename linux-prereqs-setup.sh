@@ -27,8 +27,8 @@ wget -O elastic-apm-agent-1.6.0.jar https://search.maven.org/remotecontent?filep
 #
 # GIT TEST APP & COMPILE
 git clone https://github.com/spring-projects/spring-petclinic.git
-cd /home/centos/spring-petclinic
-bash /home/centos/spring-petclinic/mvnw package
+cd /home/centos/observability-workshop/spring-petclinic
+bash /home/centos/observability-workshop/spring-petclinic/mvnw package
 #
 # IT TAKES A WHILE
 #

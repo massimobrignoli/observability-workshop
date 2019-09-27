@@ -32,7 +32,7 @@ Install-Git
 #Update-Path
 New-Item -Path $workshopPath -ItemType "directory"
 Set-Location -Path $downloadPath
-& "C:\Program Files\Git\bin\git" clone https://github.com/hemant-elastic/observability-workshop.git
+& "C:\Program Files\Git\bin\git" clone https://github.com/felix-lessoer/observability-workshop.git
 Set-Location -Path observability-workshop
 Invoke-Expression -Command ".\win-prereqs-setup.ps1"
 Copy-Item  "C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log" -Destination "C:\Users\Administrator\Desktop\"

@@ -2,10 +2,10 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 $workshopPath = "C:\Users\Administrator\Desktop\workshop-content"
 $downloadPath = "C:\Users\Administrator\Downloads\"
 # Beats used in the workshop
-$filebeat_link = 'https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.2.0-windows-x86_64.zip'
-$metricbeat_link = 'https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.2.0-windows-x86_64.zip'
-$heartbeat_link = 'https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-7.2.0-windows-x86_64.zip'
-$winlogbeat_link = 'https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.2.0-windows-x86_64.zip'
+$filebeat_link = 'https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.3.2-windows-x86_64.zip'
+$metricbeat_link = 'https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.3.2-windows-x86_64.zip'
+$heartbeat_link = 'https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-7.3.2-windows-x86_64.zip'
+$winlogbeat_link = 'https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.3.2-windows-x86_64.zip'
 
 
 function Setup-Prereqs ()

@@ -14,7 +14,7 @@ echo "gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch" | sudo tee -a /
 echo "enabled=1" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
 echo "autorefresh=1" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
 echo "type=rpm-md" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
-sudo yum install metricbeat filebeat -y
+sudo yum install metricbeat filebeat packetbeat auditbeat heartbeat -y
 #
 # DOWNLOAD THE MASTER BRANCH
 wget -O /home/centos/master.zip https://github.com/bvader/spring-petclinic/archive/master.zip

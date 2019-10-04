@@ -34,7 +34,7 @@ bash /home/centos/observability-workshop/spring-petclinic/mvnw package
 #
 # COPY THE TARGET FOLDER TO THE MASTER BRANCH
 #
-cp -r /home/centos/spring-petclinic/target /home/centos/spring-petclinic-master/
+cp -r /home/centos/observability-workshop/spring-petclinic/target /home/centos/spring-petclinic-master/
 #
 # DISABLE FIREWALL
 sudo service firewalld stop

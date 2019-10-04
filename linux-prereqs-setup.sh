@@ -43,8 +43,9 @@ sudo service firewalld stop
 wget -O nginx.zip https://www.dropbox.com/s/wkh1zm5naiat2np/nginx.zip?dl=0
 sudo mkdir /var/log/nginx
 sudo unzip nginx.zip -d /var/log/nginx/
-cd /var/log/nginx/
-mv nginx.log access.log
+
+# MOVE TO DEFAULT LOCATION FOR NGINX
+mv /var/log/nginx/nginx.log /var/log/nginx/access.log
 
 #
 # 

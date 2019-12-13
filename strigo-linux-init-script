@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo yum -y install git
 cd /home/centos
-su centos -c "git clone https://github.com/sherry-ger/observability-workshop.git"
+su centos -c "git clone https://github.com/felix-lessoer/observability-workshop.git"
 cd observability-workshop
 chmod +x linux-prereqs-setup.sh
 ./linux-prereqs-setup.sh

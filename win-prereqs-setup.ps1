@@ -8,6 +8,10 @@ $heartbeat_link = 'https://artifacts.elastic.co/downloads/beats/heartbeat/heartb
 $winlogbeat_link = 'https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.5.0-windows-x86_64.zip'
 $auditbeat_link = 'https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-7.5.0-windows-x86_64.zip'
 $packetbeat_link = 'https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-7.5.0-windows-x86_64.zip'
+# APM
+$apm_link = 'https://github.com/bvader/spring-petclinic/archive/master.zip'
+$agent_link = 'https://search.maven.org/remotecontent?filepath=co/elastic/apm/elastic-apm-agent/1.12.0/elastic-apm-agent-1.12.0.jar'
+
 
 function Setup-Prereqs ()
 {    
@@ -79,6 +83,19 @@ function Download-Beats(){
 	}
 }
 
+# Download and Unzip Beats
+function Download-APM(){
+    If (!(Test-Path -Path $workshopPath -PathType Container)) {New-Item -Path $workshopPath -ItemType Directory | Out-Null}
+    $destinationPath = $destinationPath + "\apm"
+    If (!(Test-Path -Path $destinationPath -PathType Container)) {New-Item -Path $destinationPath -ItemType Directory | Out-Null}
+    $appPath = $destinationPath + "\spring-petclinic-master"
+    If (!(Test-Path -Path $appPath -PathType Container)) {New-Item -Path $appPath -ItemType Directory | Out-Null}
+    
+    Write-Output "Downloading APM APP"
+    $webClient = New-Object System.Net.WebClient
+    $webClient.DownloadFile($apm_link,$destinationPath + "\master.zip")
+}
+
 function Copy-Data()
 {
 	If (!(Test-Path -Path $downloadPath -PathType Container)) {New-Item -Path $downloadPath -ItemType Directory | Out-Null}
@@ -100,3 +117,4 @@ function Copy-Data()
 Setup-Prereqs
 Download-Beats
 Copy-Data
+Download-APM

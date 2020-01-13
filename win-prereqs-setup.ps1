@@ -11,12 +11,13 @@ $packetbeat_link = 'https://artifacts.elastic.co/downloads/beats/packetbeat/pack
 # APM
 $apm_link = 'https://github.com/bvader/spring-petclinic/archive/master.zip'
 $agent_link = 'https://search.maven.org/remotecontent?filepath=co/elastic/apm/elastic-apm-agent/1.12.0/elastic-apm-agent-1.12.0.jar'
-
+$java_link = 'https://download.oracle.com/otn-pub/java/jdk/13.0.1+9/cec27d702aa74d5a8630c65ae61e4305/jdk-13.0.1_windows-x64_bin.exe'
+$java_link_zip = 'https://download.oracle.com/otn-pub/java/jdk/13.0.1+9/cec27d702aa74d5a8630c65ae61e4305/jdk-13.0.1_windows-x64_bin.zip'
 
 function Setup-Prereqs ()
 {    
 	# Notepad++ for users to work with files	
-	$prereq_1 = 'https://notepad-plus-plus.org/repository/7.x/7.6.6/npp.7.6.6.Installer.x64.exe'
+	$prereq_1 = 'https://notepad-plus-plus.org/repository/7.x/7.6.6/npp.7.6.6.Installer.x64.exe'	
 	
     If (!(Test-Path -Path $downloadPath -PathType Container)) {New-Item -Path $downloadPath -ItemType Directory | Out-Null}
     
@@ -85,15 +86,47 @@ function Download-Beats(){
 
 # Download and Unzip Beats
 function Download-APM(){
+	[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     If (!(Test-Path -Path $workshopPath -PathType Container)) {New-Item -Path $workshopPath -ItemType Directory | Out-Null}
-    $destinationPath = $destinationPath + "\apm"
+    $destinationPath = $workshopPath + '\apm'
     If (!(Test-Path -Path $destinationPath -PathType Container)) {New-Item -Path $destinationPath -ItemType Directory | Out-Null}
     $appPath = $destinationPath + "\spring-petclinic-master"
-    If (!(Test-Path -Path $appPath -PathType Container)) {New-Item -Path $appPath -ItemType Directory | Out-Null}
     
     Write-Output "Downloading APM APP"
     $webClient = New-Object System.Net.WebClient
     $webClient.DownloadFile($apm_link,$destinationPath + "\master.zip")
+	
+	Write-Output "Unzip APM APP"
+
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($destinationPath + "\master.zip", $destinationPath)
+	
+	Write-Output "Downloading APM Agent"
+
+	$webClient.DownloadFile($agent_link,$appPath + "\elastic-apm-agent-1.12.0.jar")
+	
+	Write-Output "Install Java"
+	#create config file for silent install
+	$text = '
+	INSTALL_SILENT=Enable
+	AUTO_UPDATE=Enable
+	SPONSORS=Disable
+	REMOVEOUTOFDATEJRES=1
+	'
+	$text | Set-Content "$destinationPath\jdkinstall.cfg"
+	$cookie = "oraclelicense=accept-securebackup-cookie"
+	$webClient.Headers.Add([System.Net.HttpRequestHeader]::Cookie, $cookie) 
+	$webClient.DownloadFile($java_link_zip,$destinationPath + "\jdk.zip")
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($destinationPath + "\jdk.zip", $destinationPath)
+	#Start-Process -FilePath "$destinationPath\jdk.exe" -ArgumentList INSTALLCFG="$destinationPath\jdkinstall.cfg"
+	#Start-Sleep -s 180	
+	#[System.Environment]::SetEnvironmentVariable("JAVA_HOME", "C:\Program Files\Java\jdk-13.0.1")
+	[System.Environment]::SetEnvironmentVariable("JAVA_HOME", $destinationPath + "\jdk-13.0.1")
+	[System.Environment]::SetEnvironmentVariable("Path", [System.Environment]::GetEnvironmentVariable('Path', [System.EnvironmentVariableTarget]::Machine) + ";$($env:JAVA_HOME)\bin")
+		
+	Write-Output "Maven package"
+	cd $appPath
+	.\mvnw.cmd package
+	
 }
 
 function Copy-Data()

@@ -2,15 +2,15 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 $workshopPath = "C:\Users\Administrator\Desktop\workshop-content"
 $downloadPath = "C:\Users\Administrator\Downloads\"
 # Beats used in the workshop
-$filebeat_link = 'https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.5.0-windows-x86_64.zip'
-$metricbeat_link = 'https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.5.0-windows-x86_64.zip'
-$heartbeat_link = 'https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-7.5.0-windows-x86_64.zip'
-$winlogbeat_link = 'https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.5.0-windows-x86_64.zip'
-$auditbeat_link = 'https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-7.5.0-windows-x86_64.zip'
-$packetbeat_link = 'https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-7.5.0-windows-x86_64.zip'
+$filebeat_link = 'https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.7.0-windows-x86_64.zip'
+$metricbeat_link = 'https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.7.0-windows-x86_64.zip'
+$heartbeat_link = 'https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-7.7.0-windows-x86_64.zip'
+$winlogbeat_link = 'https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.7.0-windows-x86_64.zip'
+$auditbeat_link = 'https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-7.7.0-windows-x86_64.zip'
+$packetbeat_link = 'https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-7.7.0-windows-x86_64.zip'
 # APM
 $apm_link = 'https://github.com/bvader/spring-petclinic/archive/master.zip'
-$agent_link = 'https://search.maven.org/remotecontent?filepath=co/elastic/apm/elastic-apm-agent/1.12.0/elastic-apm-agent-1.12.0.jar'
+$agent_link = 'https://search.maven.org/remotecontent?filepath=co/elastic/apm/elastic-apm-agent/1.16.0/elastic-apm-agent-1.16.0.jar'
 $java_link = 'https://download.oracle.com/otn-pub/java/jdk/13.0.1+9/cec27d702aa74d5a8630c65ae61e4305/jdk-13.0.1_windows-x64_bin.exe'
 $java_link_zip = 'https://download.oracle.com/otn-pub/java/jdk/13.0.1+9/cec27d702aa74d5a8630c65ae61e4305/jdk-13.0.1_windows-x64_bin.zip'
 
@@ -102,7 +102,7 @@ function Download-APM(){
 	
 	Write-Output "Downloading APM Agent"
 
-	$webClient.DownloadFile($agent_link,$appPath + "\elastic-apm-agent-1.12.0.jar")
+	$webClient.DownloadFile($agent_link,$appPath + "\elastic-apm-agent-1.16.0.jar")
 	
 	Write-Output "Install Java"
 	#create config file for silent install

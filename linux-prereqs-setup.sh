@@ -23,7 +23,7 @@ wget -O /home/centos/master.zip https://github.com/bvader/spring-petclinic/archi
 unzip /home/centos/master.zip -d /home/centos
 #
 # DOWNLOAD APM AGENT
-wget -O /home/centos/spring-petclinic-master/elastic-apm-agent-1.12.0.jar https://search.maven.org/remotecontent?filepath=co/elastic/apm/elastic-apm-agent/1.12.0/elastic-apm-agent-1.12.0.jar
+wget -O /home/centos/spring-petclinic-master/elastic-apm-agent-1.16.0.jar https://search.maven.org/remotecontent?filepath=co/elastic/apm/elastic-apm-agent/1.16.0/elastic-apm-agent-1.16.0.jar
 #
 # GIT TEST APP & COMPILE
 git clone https://github.com/spring-projects/spring-petclinic.git

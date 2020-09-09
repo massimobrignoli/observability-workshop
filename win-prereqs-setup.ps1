@@ -2,13 +2,13 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 $workshopPath = "C:\Users\Administrator\Desktop\workshop-content"
 $downloadPath = "C:\Users\Administrator\Downloads\"
 # Beats used in the workshop
-$filebeat_link = 'https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.9.0-windows-x86_64.zip'
-$metricbeat_link = 'https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.9.0-windows-x86_64.zip'
-$heartbeat_link = 'https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-7.9.0-windows-x86_64.zip'
-$winlogbeat_link = 'https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.9.0-windows-x86_64.zip'
-$auditbeat_link = 'https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-7.9.0-windows-x86_64.zip'
-$packetbeat_link = 'https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-7.9.0-windows-x86_64.zip'
-$elastic_agent_link = 'https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.9.0-windows-x86_64.zip'
+$filebeat_link = 'https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.9.1-windows-x86_64.zip'
+$metricbeat_link = 'https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.9.1-windows-x86_64.zip'
+$heartbeat_link = 'https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-7.9.1-windows-x86_64.zip'
+$winlogbeat_link = 'https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-7.9.1-windows-x86_64.zip'
+$auditbeat_link = 'https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-7.9.1-windows-x86_64.zip'
+$packetbeat_link = 'https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-7.9.1-windows-x86_64.zip'
+$elastic_agent_link = 'https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.9.1-windows-x86_64.zip'
 # APM
 $apm_link = 'https://github.com/bvader/spring-petclinic/archive/master.zip'
 $agent_link = 'https://search.maven.org/remotecontent?filepath=co/elastic/apm/elastic-apm-agent/1.16.0/elastic-apm-agent-1.17.0.jar'

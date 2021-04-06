@@ -6,15 +6,15 @@ sudo yum install unzip -y
 # INSTALL ELASTIC REPO & DOWNLOAD METRIC & FILEBEAT
 sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 sudo touch /etc/yum.repos.d/elasticsearch.repo
-echo "[elasticsearch-7.9.3]" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
-echo "name=Elasticsearch repository for 7.9.3 packages" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
-echo "baseurl=https://artifacts.elastic.co/packages/7.9.3/yum" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
+echo "[elasticsearch-7.x]" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
+echo "name=Elasticsearch repository for 7.x packages" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
+echo "baseurl=https://artifacts.elastic.co/packages/7.x/yum" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
 echo "gpgcheck=1" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
 echo "gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
 echo "enabled=1" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
 echo "autorefresh=1" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
 echo "type=rpm-md" | sudo tee -a /etc/yum.repos.d/elasticsearch.repo
-sudo yum install metricbeat filebeat packetbeat auditbeat heartbeat-elastic elastic-agent -y
+sudo yum install metricbeat-7.9.3 filebeat-7.9.3 packetbeat-7.9.3 auditbeat-7.9.3 heartbeat-elastic-7.9.3 elastic-agent-7.9.3 -y
 #
 # DOWNLOAD THE MASTER BRANCH
 wget -O /home/centos/master.zip https://github.com/bvader/spring-petclinic/archive/master.zip
